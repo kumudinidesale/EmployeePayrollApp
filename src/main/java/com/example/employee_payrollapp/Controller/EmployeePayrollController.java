@@ -1,4 +1,5 @@
 package com.example.employee_payrollapp.Controller;
+
 import com.example.employee_payrollapp.dto.EmployeeDTO;
 import com.example.employee_payrollapp.model.Employee;
 import com.example.employee_payrollapp.service.IEmployeePayrollService;
@@ -9,23 +10,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
+@RequestMapping("/employeepayrollservice")
 public class EmployeePayrollController {
     @Autowired
     IEmployeePayrollService service;
 
     @GetMapping("/getMessage")
     public ResponseEntity<String> getMessage(@RequestParam String name){
-        return new ResponseEntity<String>(service.getMessage(name),HttpStatus.OK);
+        String message = service.getMessage(name);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     @PostMapping("/postMessage")
-    public ResponseEntity<String> postMessage(@RequestBody Employee employee){
-        return new ResponseEntity<String>(service.postMessage(employee),HttpStatus.OK);
+    public ResponseEntity<String> postMessage(@RequestBody EmployeeDTO employeeDTO){
+        String message = service.postMessage(employeeDTO);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     @PutMapping("/putMessage/{name}")
     public ResponseEntity<String> putMessage(@PathVariable String name){
-        return new ResponseEntity<String>(service.putMessage(name),HttpStatus.OK);
+        String message = service.putMessage(name);
+        return new ResponseEntity<String>(message,HttpStatus.OK);
     }
     //ability to display welcome message
     @GetMapping("/employeepayrollservice")

@@ -81,5 +81,4 @@ public class EmployeeDTO {
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-}
+    }}
