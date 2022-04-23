@@ -1,8 +1,7 @@
 package com.example.employee_payrollapp.dto;
 
-import org.springframework.stereotype.Service;
 
-@Service
+
 public class ResponseDTO {
     private String messsage;
     private Object data;
@@ -12,17 +11,20 @@ public class ResponseDTO {
         this.messsage = messsage;
         this.data = data;
     }
+
     public String getMesssage() {
         return messsage;
     }
+
     public void setMesssage(String messsage) {
         this.messsage = messsage;
     }
+
     public Object getData() {
         return data;
     }
+
     public void setData(Object data) {
         this.data = data;
     }
-
 }
