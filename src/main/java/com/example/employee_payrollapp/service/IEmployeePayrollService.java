@@ -1,25 +1,19 @@
 package com.example.employee_payrollapp.service;
 
 
-import com.example.employee_payrollapp.model.User;
+import com.example.employee_payrollapp.dto.EmployeeDTO;
+import com.example.employee_payrollapp.model.Employee;
 
 import java.util.List;
-import java.util.Optional;
-
 
 public interface IEmployeePayrollService {
-
     public String getMessage(String name) ;
-    public User postMessage(User employee);
+    public String postMessage(Employee employee);
     public String putMessage(String name) ;
-
-    String getWelcome();
-
-    User postDataToRepo(User employee);
-
-    List<User> getAllData();
-
-    Optional<User> getDataById(Integer id);
-
-    User updateDataById(Integer id, User employee);
+    public String getWelcome();
+    public Employee postDataToRepo(Employee employee);
+    public List<Employee> getAllData();
+    public Employee getDataById(Integer id);
+    public Employee updateDataById(Integer id, EmployeeDTO.EmployeeDTO employeeDTO);
+    public String deleteDataById(Integer id);
 }

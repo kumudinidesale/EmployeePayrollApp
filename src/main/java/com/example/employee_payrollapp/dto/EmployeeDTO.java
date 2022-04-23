@@ -1,58 +1,30 @@
-package com.example.employee_payrollapp.model;
+package com.example.employee_payrollapp.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class EmployeeDTO {
     private String firstName;
     private String lastName;
-
+    private String profilePic;
     private String department;
-    private Long salary;
+    private Long salary ;
     private LocalDate date;
+    private String notes;
 
-
-    public User(Integer id, String firstName, String lastName,  String department, Long salary,
-                    LocalDate date) {
+    public EmployeeDTO() {
         super();
-        this.id = id;
+    }
+
+    public EmployeeDTO(String firstName, String lastName, String profilePic, String department, Long salary,
+                       LocalDate date, String notes) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.profilePic = profilePic;
         this.department = department;
         this.salary = salary;
         this.date = date;
-
-    }
-
-    public User() {
-        super();
-    }
-
-    public User(User employee) {
-        super();
-        this.id = employee.id;
-        this.firstName = employee.firstName;
-        this.lastName = employee.lastName;
-
-        this.department = employee.department;
-        this.salary = employee.salary;
-        this.date = employee.date;
-
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        this.notes = notes;
     }
 
     public String getFirstName() {
@@ -71,7 +43,13 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
 
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
 
     public String getDepartment() {
         return department;
@@ -97,5 +75,11 @@ public class User {
         this.date = date;
     }
 
+    public String getNotes() {
+        return notes;
+    }
 
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }
