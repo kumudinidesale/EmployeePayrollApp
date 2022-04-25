@@ -30,6 +30,11 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     public String getWelcome() {
         return "Welcome to Employee Payroll App.....!";
     }
+    @Override
+    public List<Employee> getEmployee() {
+        return null;
+    }
+
 
     @Override
     public Employee postDataToRepo(EmployeeDTO employee) {
@@ -61,9 +66,5 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return "Employee with unique ID:" + id + " got deleted";
     }
 
-    @Override
-    public List<Employee> getEmployee() {
-        return null;
-    }
 
 }

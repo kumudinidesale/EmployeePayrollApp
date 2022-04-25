@@ -54,6 +54,4 @@ public class Employee {
         this.date = employeeDTO.getDate();
         this.notes = employeeDTO.getNotes();
     }
-
-
 }
