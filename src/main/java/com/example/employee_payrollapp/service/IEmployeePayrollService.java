@@ -25,4 +25,6 @@ public interface IEmployeePayrollService {
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 
     public String deleteDataById(Integer id);
+
+    public List<Employee> getEmployee();
 }

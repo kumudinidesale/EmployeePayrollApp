@@ -15,39 +15,45 @@ import java.util.Optional;
 
 
 @RestController
+@RequestMapping( "/employeePayrollService")
 public class EmployeePayrollController {
     @Autowired
     IEmployeePayrollService service;
 
 
-    //Ability to display welcome message
-    @GetMapping("/employeePayrollService")
-    public ResponseEntity<String> getWelcome() {
-        return new ResponseEntity<String>(service.getWelcome(), HttpStatus.OK);
+    @RequestMapping(value={"","/","/get"})
+    public ResponseEntity<Employee>getContactData() {
+        List<Employee> employeesList = service.getEmployee();
+        ResponseDTO responseDTO = new ResponseDTO("Get call success",employeesList);
+        Object employeeDTO = null;
+
+        return new ResponseEntity(employeeDTO, HttpStatus.OK);
     }
 
     //Ability to save employee details to repository
-    @PostMapping("/employeePayrollService/create")
+    @PostMapping("/create")
     public ResponseEntity<Employee> saveDataToRepo(@RequestBody EmployeeDTO employee) {
         return new ResponseEntity<Employee>(service.postDataToRepo(employee), HttpStatus.OK);
     }
 
     //Ability to get all employees' data by findAll() method
-    @GetMapping("/employeePayrollService/get")
+    @GetMapping("/get")
     public ResponseEntity<List<Employee>> getAllDataFromRepo() {
         return new ResponseEntity<List<Employee>>(service.getAllData(), HttpStatus.OK);
     }
 
     //Ability to get employee data by id
-    @GetMapping("/employeePayrollService/get/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<Employee> getDataFromRepoById(@PathVariable Integer id) {
-        Optional<Employee> employee = Optional.ofNullable(service.getDataById(id));
+        Optional<Employee> employee = service.getDataById(id);
+
         ResponseDTO dto = new ResponseDTO("Data",employee);
         return new ResponseEntity(dto, HttpStatus.OK);
     }
 
+
     //Ability to update employee data for particular id
-    @PutMapping("/employeePayrollService/update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateDataInRepo(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
         Employee employee = service.updateDataById(id, employeeDTO);
         ResponseDTO responseDTO = new ResponseDTO("Updating Employee PayrollData Successfuly:", employee);
@@ -55,7 +61,7 @@ public class EmployeePayrollController {
     }
 
     //Ability to delete employee data for particular id
-    @DeleteMapping("/employeePayrollService/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id) {
         return new ResponseEntity<String>(service.deleteDataById(id), HttpStatus.OK);
     }

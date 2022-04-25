@@ -61,4 +61,9 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return "Employee with unique ID:" + id + " got deleted";
     }
 
+    @Override
+    public List<Employee> getEmployee() {
+        return null;
     }
+
+}
