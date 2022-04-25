@@ -32,6 +32,11 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     }
 
     @Override
+    public List<Employee> getEmployee() {
+        return null;
+    }
+
+    @Override
     public Employee postDataToRepo(EmployeeDTO employee) {
         Employee newEmployee = new Employee(employee);
         repository.save(newEmployee);
@@ -61,9 +66,6 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return "Employee with unique ID:" + id + " got deleted";
     }
 
-    @Override
-    public List<Employee> getEmployee() {
-        return null;
-    }
+
 
 }
