@@ -40,7 +40,7 @@ public class Employee {
         this.firstName = employee.getFirstName();
         this.lastName = employee.getLastName();
         this.profilePic = employee.getProfilePic();
-        this.department = employee.getDepartment();
+        this.department = String.valueOf(employee.getDepartment());
         this.salary = employee.getSalary();
         this.date = employee.getDate();
         this.notes = employee.getNotes();
@@ -52,7 +52,7 @@ public class Employee {
         this.firstName = employeeDTO.getFirstName();
         this.lastName = employeeDTO.getLastName();
         this.profilePic = employeeDTO.getProfilePic();
-        this.department = employeeDTO.getDepartment();
+        this.department = String.valueOf(employeeDTO.getDepartment());
         this.salary = employeeDTO.getSalary();
         this.date = employeeDTO.getDate();
         this.notes = employeeDTO.getNotes();
