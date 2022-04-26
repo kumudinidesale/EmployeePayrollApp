@@ -6,6 +6,8 @@ import com.example.employee_payrollapp.dto.EmployeeDTO;
 import com.example.employee_payrollapp.dto.ResponseDTO;
 import com.example.employee_payrollapp.model.Employee;
 import com.example.employee_payrollapp.service.IEmployeePayrollService;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping( "/employeePayrollService")
+@Slf4j
 public class EmployeePayrollController {
     @Autowired
     IEmployeePayrollService service;

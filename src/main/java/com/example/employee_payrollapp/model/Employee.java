@@ -8,7 +8,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import java.time.LocalDate;
 
@@ -27,6 +27,8 @@ public class Employee {
     private LocalDate date;
     private String notes;
 
+    private String gender;
+
 
     public Employee() {
 
@@ -42,6 +44,7 @@ public class Employee {
         this.salary = employee.getSalary();
         this.date = employee.getDate();
         this.notes = employee.getNotes();
+        this.gender = employee.getGender();
     }
 
     public Employee(Integer id, EmployeeDTO employeeDTO) {
@@ -53,6 +56,7 @@ public class Employee {
         this.salary = employeeDTO.getSalary();
         this.date = employeeDTO.getDate();
         this.notes = employeeDTO.getNotes();
+        this.gender = employeeDTO.getGender();
     }
 
 
