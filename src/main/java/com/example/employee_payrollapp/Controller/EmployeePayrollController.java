@@ -1,6 +1,7 @@
 package com.example.employee_payrollapp.Controller;
 
 
+import com.example.employee_payrollapp.Exception.EmployeePayrollException;
 import com.example.employee_payrollapp.dto.EmployeeDTO;
 import com.example.employee_payrollapp.dto.ResponseDTO;
 import com.example.employee_payrollapp.model.Employee;
@@ -58,22 +59,27 @@ public class EmployeePayrollController {
     }
     //Ability to get employee data by id
     @GetMapping("/get/{id}")
-    public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer id){
+    public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer id) throws EmployeePayrollException {
         Optional<Employee> existingEmployee = service.getDataById(id);
-        ResponseDTO dto = new ResponseDTO("Record for given ID Retrieved Successfully", existingEmployee);
-        return new ResponseEntity(dto,HttpStatus.OK);
+        ResponseDTO responseDTO = new ResponseDTO("Record for given ID Retrieved Successfully", existingEmployee);
+        return new ResponseEntity(responseDTO, HttpStatus.OK);
     }
+
     //Ability to update employee data for particular id
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateDataInRepo(@PathVariable Integer id,@Valid @RequestBody EmployeeDTO employeeDTO){
+    public ResponseEntity<String> updateDataInRepo(@PathVariable Integer id,
+                                                   @Valid @RequestBody EmployeeDTO employeeDTO)
+            throws EmployeePayrollException {
         Employee updatedEmployee = service.updateDataById(id, employeeDTO);
-        ResponseDTO dto = new ResponseDTO("Record for particular ID Updated Successfully",updatedEmployee);
-        return new ResponseEntity(dto,HttpStatus.ACCEPTED);
+        ResponseDTO responseDTO = new ResponseDTO("Record for particular ID Updated Successfully", updatedEmployee);
+        return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
     }
+
     //Ability to delete employee data for particular id
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id){
-        ResponseDTO dto = new ResponseDTO("Record for particular ID Deleted Successfully", service.deleteDataById(id));
-        return new ResponseEntity(dto,HttpStatus.ACCEPTED);
+    public ResponseEntity<String> deleteDataInRepo(@PathVariable Integer id) throws EmployeePayrollException {
+        ResponseDTO responseDTO = new ResponseDTO
+                ("Record for particular ID Deleted Successfully", service.deleteDataById(id));
+        return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
     }
 }
