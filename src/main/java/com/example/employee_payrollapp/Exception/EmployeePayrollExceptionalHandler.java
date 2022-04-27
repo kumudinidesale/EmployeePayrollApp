@@ -21,12 +21,12 @@ import java.util.stream.Collectors;
 @Slf4j
 public class EmployeePayrollExceptionalHandler {
 public static  final String message = "Exception while processing REST Rquest";
-@ExceptionHandler(HttpMessageNotReadableException.class)
-public ResponseEntity<ResponseDTO> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
-    log.error("Invalid Date Format", exception);
-    ResponseDTO responseDTO =new ResponseDTO(message,"should have date in the format dd MMM yyyy");
-    return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
-}
+//@ExceptionHandler(HttpMessageNotReadableException.class)
+//public ResponseEntity<ResponseDTO> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
+//    log.error("Invalid Date Format", exception);
+//    ResponseDTO responseDTO =new ResponseDTO(message,"should have date in the format dd MM yyyy");
+//    return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+//}
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseDTO> handlerMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
 

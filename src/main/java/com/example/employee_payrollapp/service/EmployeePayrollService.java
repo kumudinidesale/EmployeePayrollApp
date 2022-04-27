@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
     @Autowired
@@ -46,15 +47,23 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 
     @Override
     public Optional<Employee> getDataById(Integer id) {
-        Optional<Employee> newEmployee = repository.findById(id);
-        return newEmployee;
+        return Optional.empty();
     }
+
 
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO) {
         Employee newEmployee = new Employee(id, employeeDTO);
         repository.save(newEmployee);
         return newEmployee;
     }
+
+    /*public Employee updateDataById(Integer id, EmployeeDTO employee) {
+        Employee employee = this.getDataById(id);
+        employee.updateDataById(employee);
+        return repository.save(employee);*/
+
+
+
 
     public String deleteDataById(Integer id) {
         repository.deleteById(id);
