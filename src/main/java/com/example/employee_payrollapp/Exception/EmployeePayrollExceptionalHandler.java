@@ -20,8 +20,9 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 @Slf4j
 public class EmployeePayrollExceptionalHandler {
-public static  final String message = "Exception while processing REST Rquest";
-//@ExceptionHandler(HttpMessageNotReadableException.class)
+    public static final String message = "Exception while processing REST Rquest";
+
+    //@ExceptionHandler(HttpMessageNotReadableException.class)
 //public ResponseEntity<ResponseDTO> handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
 //    log.error("Invalid Date Format", exception);
 //    ResponseDTO responseDTO =new ResponseDTO(message,"should have date in the format dd MM yyyy");
@@ -43,6 +44,5 @@ public static  final String message = "Exception while processing REST Rquest";
         ResponseDTO response = new ResponseDTO("Invalid id input", exception.getMessage());
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.BAD_REQUEST);
     }
-
 }
 

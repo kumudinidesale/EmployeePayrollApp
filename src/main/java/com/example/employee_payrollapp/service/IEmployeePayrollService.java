@@ -26,5 +26,6 @@ public interface IEmployeePayrollService {
 
     public String deleteDataById(Integer id);
 
-    public List<Employee> getEmployee();
+
+    public List<Employee> getDataByDepartment(String department);
 }
