@@ -85,7 +85,7 @@ public class EmployeePayrollController {
                 ("Record for particular ID Deleted Successfully", service.deleteDataById(id));
         return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
     }
-    @GetMapping("/getbydepartment/{department}")
+    @GetMapping("/getbydepartment/{department}git ")
     public ResponseEntity<ResponseDTO> getRecordFromRepoByDepartment(@PathVariable String department) throws EmployeePayrollException {
         List<Employee> newEmployee = service.getDataByDepartment(department);
         ResponseDTO dto = new ResponseDTO("Record for given Department Retrieved Successfully", newEmployee);
