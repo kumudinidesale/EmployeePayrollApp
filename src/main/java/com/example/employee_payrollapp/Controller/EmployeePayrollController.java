@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-
+@CrossOrigin(allowedHeaders="*",origins="*")
 @RestController
 @RequestMapping( "/employeePayrollService")
 @Slf4j
@@ -30,11 +30,11 @@ public class EmployeePayrollController {
         String message = service.getMessage(name);
         return new ResponseEntity<String>(message,HttpStatus.OK);
     }
-    @PostMapping("/postMessage")
-    public ResponseEntity<String> postMessage(@Valid @RequestBody EmployeeDTO employeeDTO){
-        String message = service.postMessage(employeeDTO);
-        return new ResponseEntity<String>(message,HttpStatus.OK);
-    }
+//    @PostMapping("/postMessage")
+//    public ResponseEntity<String> postMessage(@Valid @RequestBody EmployeeDTO employeeDTO){
+//        String message = service.postMessage(employeeDTO);
+//        return new ResponseEntity<String>(message,HttpStatus.OK);
+//    }
     @PutMapping("/putMessage/{name}")
     public ResponseEntity<String> putMessage(@PathVariable String name){
         String message = service.putMessage(name);
@@ -63,7 +63,7 @@ public class EmployeePayrollController {
     //Ability to get employee data by id
     @GetMapping("/get/{id}")
     public ResponseEntity<String> getDataFromRepoById(@PathVariable Integer id) throws EmployeePayrollException {
-        Optional<Employee> existingEmployee = service.getDataById(id);
+        Employee existingEmployee = service.getDataById(id);
         ResponseDTO responseDTO = new ResponseDTO("Record for given ID Retrieved Successfully", existingEmployee);
         return new ResponseEntity(responseDTO, HttpStatus.OK);
     }

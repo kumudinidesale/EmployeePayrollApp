@@ -21,20 +21,21 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "employee_id")
     private Integer id;
-@Column(name = "firstName")
-    private String firstName;
-    private String lastName;
+
+    private String name;
+   
     private String profilePic;
 
     private Long salary;
-    private LocalDate Date;
-    private String notes;
+
+    private String startDate;
+    private String note;
 
     private String gender;
 @ElementCollection
 @CollectionTable( name ="employee_department",joinColumns = @JoinColumn(name ="id"))
 @Column(name = "department")
-    private List<String> department;
+    private List<String> departments;
     public Employee() {
 
         super();
@@ -42,25 +43,25 @@ public class Employee {
 
     public Employee(EmployeeDTO employee) {
 
-        this.firstName = employee.getFirstName();
-        this.lastName = employee.getLastName();
+        this.name = employee.getName();
+
         this.profilePic = employee.getProfilePic();
-        this.department = employee.getDepartment();
+        this.departments = employee.getDepartments();
         this.salary = employee.getSalary();
-        this.Date = employee.getDate();
-        this.notes = employee.getNotes();
+        this.startDate = employee.getStartDate();
+        this.note = employee.getNote();
         this.gender = employee.getGender();
     }
 
     public Employee(Integer id, EmployeeDTO employeeDTO) {
         this.id = id;
-        this.firstName = employeeDTO.getFirstName();
-        this.lastName = employeeDTO.getLastName();
+        this.name = employeeDTO.getName();
+
         this.profilePic = employeeDTO.getProfilePic();
-        this.department = employeeDTO.getDepartment();
+        this.departments = employeeDTO.getDepartments();
         this.salary = employeeDTO.getSalary();
-        this.Date = employeeDTO.getDate();
-        this.notes = employeeDTO.getNotes();
+        this.startDate = employeeDTO.getStartDate();
+        this.note = employeeDTO.getNote();
         this.gender = employeeDTO.getGender();
     }
 

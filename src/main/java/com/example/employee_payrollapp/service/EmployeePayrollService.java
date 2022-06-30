@@ -1,6 +1,7 @@
 package com.example.employee_payrollapp.service;
 
 
+import com.example.employee_payrollapp.Exception.EmployeePayrollException;
 import com.example.employee_payrollapp.dto.EmployeeDTO;
 import com.example.employee_payrollapp.model.Employee;
 import com.example.employee_payrollapp.repository.EmployeePayrollRepository;
@@ -20,9 +21,9 @@ public class EmployeePayrollService implements IEmployeePayrollService {
         return "Welcome To Employee Program " + name;
     }
 
-    public String postMessage(EmployeeDTO employee) {
-        return "Hello Employee " + employee.getFirstName() + "" + employee.getLastName() + "!";
-    }
+//    public String postMessage(EmployeeDTO employee) {
+//        return "Hello Employee " + employee.getFirstName() + "" + employee.getLastName() + "!";
+//    }
 
     public String putMessage(String name) {
         return "Hey Dude , " + name;
@@ -46,8 +47,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
     }
 
     @Override
-    public Optional<Employee> getDataById(Integer id) {
-        return Optional.empty();
+    public Employee getDataById(Integer id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new EmployeePayrollException("Employee with EmployeeId " + id
+                        + " Doesn't Exists...!"));
     }
 
 

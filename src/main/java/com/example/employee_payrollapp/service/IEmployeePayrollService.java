@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IEmployeePayrollService {
     String getMessage(String name);
 
-    String postMessage(EmployeeDTO employee);
+//    String postMessage(EmployeeDTO employee);
 
     String putMessage(String name);
 
@@ -20,7 +20,7 @@ public interface IEmployeePayrollService {
 
     public List<Employee> getAllData();
 
-    public Optional<Employee> getDataById(Integer id);
+    public Employee getDataById(Integer id);
 
     public Employee updateDataById(Integer id, EmployeeDTO employeeDTO);
 
